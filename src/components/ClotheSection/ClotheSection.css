@@ -1,0 +1,30 @@
+.clothes-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  font-weight: 700;
+  font-style: bold;
+}
+
+.clothes__section-header {
+  display: flex;
+  gap: 20px;
+  font-weight: 700;
+  font-style: bold;
+}
+
+.add__new-garment {
+  border: none;
+}
+.add__new-garment:hover {
+  font-weight: 700;
+}
+
+.clothes-section__items {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  gap: 12px;
+}

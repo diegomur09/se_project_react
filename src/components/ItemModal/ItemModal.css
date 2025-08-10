@@ -1,0 +1,21 @@
+.modal__image {
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+}
+
+.modal__content.modal__content_type_image {
+  padding: 0;
+}
+
+.modal__caption {
+  padding-top: 20px;
+  padding-left: 32px;
+  margin: 0;
+}
+
+.modal__weather {
+  margin: 0;
+  padding-top: 12px;
+  padding-left: 32px;
+  padding-bottom: 32px;
+}

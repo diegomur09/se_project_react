@@ -1,0 +1,24 @@
+.page {
+  background-color: rgba(243, 243, 243, 1);
+}
+
+.page__content {
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+.modal__legend {
+  margin-bottom: 12px;
+}
+
+.modal__label.modal__label_type_radio {
+  opacity: 0.5;
+}
+.modal__radio-input:checked + .modal__label_type_radio {
+  opacity: 0;
+  color: #000;
+}
+
+.modal__radio-input {
+  color: black;
+}
