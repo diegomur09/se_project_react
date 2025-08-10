@@ -1,4 +1,4 @@
-import "./ClotheSection.css";
+import "./ClothesSection.css";
 
 import ItemCard from "../ItemCard/ItemCard";
 
