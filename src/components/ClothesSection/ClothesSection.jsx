@@ -2,7 +2,7 @@ import "./ClothesSection.css";
 
 import ItemCard from "../ItemCard/ItemCard";
 
-function ClotheSection({ onCardClick, clothingItems = [], handleAddClick }) {
+function ClothesSection({ onCardClick, clothingItems = [], handleAddClick }) {
   return (
     <div className="clothes-section">
       <div className="clothes__section-header">
@@ -26,4 +26,4 @@ function ClotheSection({ onCardClick, clothingItems = [], handleAddClick }) {
     </div>
   );
 }
-export default ClotheSection;
+export default ClothesSection;
