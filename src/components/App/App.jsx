@@ -13,16 +13,18 @@ import ItemModal from "../ItemModal/ItemModal";
 import Footer from "../Footer/Footer";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 import Profile from "../Profile/Profile";
+import AddItemModal from "../AddItemModal/AddItemModal";
 
 //Utility/API imports
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
-import { getItems } from "../../utils/api";
+import { getItems, addItem, deleteItem } from "../../utils/api";
 
 // Constants and configuration imports
-import { coordinates, APIkey } from "../../utils/constants";
-
-import AddItemModal from "../AddItemModal/AddItemModal";
-import { defaultClothingItems } from "../../utils/constants";
+import {
+  coordinates,
+  APIkey,
+  defaultClothingItems,
+} from "../../utils/constants";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -58,15 +60,30 @@ function App() {
   };
 
   const handleAddItemModalSubmit = ({ name, imageUrl, weather }) => {
-    const newId = Math.max(...clothingItems.map((item) => item._id)) + 1;
+    addItem({ name, weather, imageUrl })
+      .then((created) => {
+        const normalized = {
+          _id: created._id,
+          name: created.name,
+          weather: created.weather,
+          link: created.link ?? created.imageUrl ?? imageUrl,
+        };
+        setClothingItems((prev) => [normalized, ...prev]);
+        closeActiveModal();
+      })
+      .catch((err) => {
+        console.error("Failed to add item:", err);
+      });
+  };
 
-    setClothingItems([
-      { name, link: imageUrl, weather, _id: newId },
-      ...clothingItems,
-      selectedCard,
-    ]);
-    //close the modal
-    closeActiveModal();
+  const handleDeleteItem = (id) => {
+    if (!id) return;
+    deleteItem(id)
+      .then(() => {
+        setClothingItems((prev) => prev.filter((it) => it._id !== id));
+        closeActiveModal();
+      })
+      .catch((err) => console.error("Failed to delete item:", err));
   };
 
   useEffect(() => {
@@ -135,6 +152,7 @@ function App() {
           activeModal={activeModal}
           card={selectedCard}
           onClose={closeActiveModal}
+          onDelete={handleDeleteItem}
         />
       </div>
     </CurrentTemperatureUnitContext.Provider>

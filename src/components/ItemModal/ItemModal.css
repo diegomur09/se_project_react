@@ -1,3 +1,8 @@
+.modal__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
 .modal__image {
   border-top-left-radius: 16px;
   border-top-right-radius: 16px;
@@ -6,11 +11,16 @@
 .modal__content.modal__content_type_image {
   padding: 0;
 }
-
+.modal__details {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
 .modal__caption {
   padding-top: 20px;
   padding-left: 32px;
   margin: 0;
+  font-weight: 700;
 }
 
 .modal__weather {
@@ -18,4 +28,107 @@
   padding-top: 12px;
   padding-left: 32px;
   padding-bottom: 32px;
+}
+
+.modal__delete {
+  appearance: none;
+  background: none;
+  border: 0;
+  padding-top: 20px;
+  padding-right: 32px;
+  color: #ff6b00;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  position: relative;
+}
+
+.modal__delete:hover {
+  text-decoration: underline;
+}
+
+.modal__delete:focus-visible {
+  outline: 2px solid rgba(255, 77, 0, 1);
+  outline-offset: 2px;
+}
+
+.confirm {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+
+/* Confirm dialog box */
+.confirm__content {
+  position: relative;
+  background: #fff;
+  border-radius: 12px;
+  padding: 32px 24px 24px;
+  width: min(480px, 90vw);
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Close button (X icon) */
+.confirm__close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: none;
+  border: none;
+  padding: 4px;
+  cursor: pointer;
+}
+
+/* Title & subtitle */
+.confirm__title {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0 0 4px 0;
+}
+
+.confirm__subtitle {
+  font-size: 14px;
+  color: #333;
+  margin: 0 0 20px 0;
+}
+
+/* Action buttons */
+.confirm__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.confirm__delete {
+  appearance: none;
+  background: none;
+  border: none;
+  padding: 0;
+  color: #ff6b00;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.confirm__delete:hover {
+  text-decoration: underline;
+}
+
+.confirm__cancel {
+  appearance: none;
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 15px;
+  color: #000;
+  cursor: pointer;
+}
+
+.confirm__cancel:hover {
+  text-decoration: underline;
 }
