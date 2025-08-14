@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./UseForm.css";
 
-export function UseForm(initialValues) {
+export function useForm(initialValues) {
   const [values, setValues] = useState(initialValues);
 
   const handleChange = (event) => {
