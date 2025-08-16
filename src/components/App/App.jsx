@@ -60,7 +60,7 @@ function App() {
   };
 
   const handleAddItemModalSubmit = ({ name, imageUrl, weather }) => {
-    addItem({ name, weather, imageUrl })
+    return addItem({ name, weather, imageUrl })
       .then((created) => {
         const normalized = {
           _id: created._id,
