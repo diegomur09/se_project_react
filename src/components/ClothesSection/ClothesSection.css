@@ -15,6 +15,7 @@
 
 .add__new-garment {
   border: none;
+  background-color: transparent;
 }
 .add__new-garment:hover {
   font-weight: 700;
