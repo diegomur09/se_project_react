@@ -18,17 +18,37 @@ function getItems() {
 }
 
 function addItem({ name, weather, imageUrl }) {
+  const token = localStorage.getItem("jwt");
   return fetch(`${baseUrl}/items`, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
     body: JSON.stringify({ name, weather, imageUrl }),
   }).then(checkResponse);
 }
 
 function deleteItem(id) {
-  return fetch(`${baseUrl}/items/${id}`, { method: "DELETE" }).then(
-    checkResponseAllowEmpty
-  );
+  const token = localStorage.getItem("jwt");
+  return fetch(`${baseUrl}/items/${id}`, {
+    method: "DELETE",
+    headers: { Authorization: `Bearer ${token}` },
+  }).then(checkResponseAllowEmpty);
 }
 
-export { getItems, addItem, deleteItem };
+function addCardLike(id, token) {
+  return fetch(`${baseUrl}/items/${id}/likes`, {
+    method: "PUT",
+    headers: { Authorization: `Bearer ${token}` },
+  }).then(checkResponse);
+}
+
+function removeCardLike(id, token) {
+  return fetch(`${baseUrl}/items/${id}/likes`, {
+    method: "DELETE",
+    headers: { Authorization: `Bearer ${token}` },
+  }).then(checkResponse);
+}
+
+export { getItems, addItem, deleteItem, addCardLike, removeCardLike };

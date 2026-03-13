@@ -3,7 +3,7 @@ function Footer() {
   return (
     <footer className="footer">
       <div className="footer__content">
-        <p className="autorname">Developed by Diego Alejandor Navas Murcia</p>
+        <p className="autorname">Developed by Diego Alejandro Navas Murcia</p>
         <p className="footerdate">2025</p>
       </div>
     </footer>

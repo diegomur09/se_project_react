@@ -2,22 +2,62 @@
   width: 323px;
   border-radius: 16px;
   position: relative;
-  display: flex;
-  justify-content: center;
   background-color: rgba(0, 0, 0, 0.3);
   overflow: hidden;
   border: 1px solid rgba(0, 0, 0, 0.3);
 }
 
+.card__header {
+  position: static;
+}
+
 .card__name {
   position: absolute;
   top: 15px;
+  left: 15px;
   margin: 0;
   background-color: rgba(255, 255, 255, 1);
   border-radius: 16px;
   padding: 2px 12px;
+  z-index: 1;
+}
+
+.card__like-button {
+  width: 30px;
+  height: 30px;
+  border: none;
+  background-color: transparent;
+  color: rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  z-index: 1;
+}
+
+.card__like-button::before {
+  content: "\2661";
+  font-size: 28px;
+  line-height: 1;
+}
+
+.card__like-button_liked {
+  color: #ff4d00;
+}
+
+.card__like-button_liked::before {
+  content: "\2665";
+}
+
+.card__like-button_hidden {
+  display: none;
 }
 
 .card__image {
   width: 100%;
+  display: block;
 }
