@@ -73,6 +73,7 @@ function App() {
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
+  const [isAuthChecked, setIsAuthChecked] = useState(false);
 
   const handleToggleSwitchChange = () => {
     setCurrentTemperatureUnit(currentTemperatureUnit === "F" ? "C" : "F");
@@ -213,7 +214,10 @@ function App() {
 
   useEffect(() => {
     const token = localStorage.getItem("jwt");
-    if (!token) return;
+    if (!token) {
+      setIsAuthChecked(true);
+      return;
+    }
 
     checkToken(token)
       .then((user) => {
@@ -224,6 +228,9 @@ function App() {
         localStorage.removeItem("jwt");
         setIsLoggedIn(false);
         setCurrentUser(null);
+      })
+      .finally(() => {
+        setIsAuthChecked(true);
       });
   }, []);
 
@@ -257,7 +264,10 @@ function App() {
               <Route
                 path="/profile"
                 element={
-                  <ProtectedRoute isLoggedIn={isLoggedIn}>
+                  <ProtectedRoute
+                    isLoggedIn={isLoggedIn}
+                    isAuthChecked={isAuthChecked}
+                  >
                     <Profile
                       handleCardClick={handleCardClick}
                       clothingItems={clothingItems}

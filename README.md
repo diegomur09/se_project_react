@@ -4,6 +4,12 @@ A React application that helps users decide what to wear based on the weather co
 
 ---
 
+## Backend Repository
+
+https://github.com/diegomur09/se_project_express
+
+---
+
 ## Description
 
 This app fetches live weather data from an external API and displays it in the header. Based on the weather, users can manage a wardrobe of garments suitable for different temperatures. The app supports adding new garments, viewing details in modals, and has a clean UI with reusable components.
