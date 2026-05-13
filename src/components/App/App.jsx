@@ -1,6 +1,6 @@
 //External library imports
 import { useEffect, useState } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 
 // Asset imports
 import "./App.css";
@@ -44,6 +44,8 @@ import {
 } from "../../utils/constants";
 
 function App() {
+  const navigate = useNavigate();
+
   const DEFAULT_AVATAR_URL =
     "https://api.dicebear.com/9.x/initials/svg?seed=WTWR";
 
@@ -113,6 +115,7 @@ function App() {
         setCurrentUser(user);
         setIsLoggedIn(true);
         closeActiveModal();
+        navigate("/");
         return user;
       });
     });
@@ -192,6 +195,7 @@ function App() {
     localStorage.removeItem("jwt");
     setIsLoggedIn(false);
     setCurrentUser(null);
+    navigate("/");
   };
 
   useEffect(() => {

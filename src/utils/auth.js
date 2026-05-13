@@ -1,18 +1,6 @@
+import { checkResponse } from "./api";
+
 const baseUrl = "http://localhost:3001";
-
-const checkResponse = async (res) => {
-  if (res.ok) return res.json();
-
-  let message = `Error: ${res.status}`;
-  try {
-    const data = await res.json();
-    if (data?.message) message = data.message;
-  } catch (e) {
-    // Keep fallback message when body is not JSON.
-  }
-
-  return Promise.reject(new Error(message));
-};
 
 export const register = ({ name, avatar, email, password }) =>
   fetch(`${baseUrl}/signup`, {

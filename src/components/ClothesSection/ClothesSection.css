@@ -3,7 +3,7 @@
   flex-direction: column;
   gap: 16px;
   font-weight: 700;
-  font-style: bold;
+  font-weight: bold
 }
 
 .clothes__section-header {
