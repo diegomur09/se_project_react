@@ -112,7 +112,7 @@ function App() {
     return authorize({ email, password }).then((res) => {
       localStorage.setItem("jwt", res.token);
       return checkToken(res.token).then((user) => {
-        setCurrentUser(user);
+        setCurrentUser(user.data ?? user);
         setIsLoggedIn(true);
         closeActiveModal();
         navigate("/");
@@ -132,7 +132,7 @@ function App() {
   const handleUpdateUser = ({ name, avatar }) => {
     const token = localStorage.getItem("jwt");
     return updateProfile({ name, avatar }, token).then((updatedUser) => {
-      setCurrentUser(updatedUser);
+      setCurrentUser(updatedUser.data ?? updatedUser);
       closeActiveModal();
     });
   };
@@ -206,7 +206,8 @@ function App() {
 
   useEffect(() => {
     getItems()
-      .then((items) => {
+      .then((res) => {
+        const items = Array.isArray(res) ? res : res?.data;
         if (!Array.isArray(items) || items.length === 0) return;
         const normalized = items.map((it, idx) =>
           normalizeItem({ ...it, _id: it._id ?? idx + 1 }),
@@ -225,7 +226,7 @@ function App() {
 
     checkToken(token)
       .then((user) => {
-        setCurrentUser(user);
+        setCurrentUser(user.data ?? user);
         setIsLoggedIn(true);
       })
       .catch(() => {
