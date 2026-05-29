@@ -37,11 +37,7 @@ import {
 } from "../../utils/auth";
 
 // Constants and configuration imports
-import {
-  coordinates,
-  APIkey,
-  defaultClothingItems,
-} from "../../utils/constants";
+import { coordinates, APIkey } from "../../utils/constants";
 
 function App() {
   const navigate = useNavigate();
@@ -67,7 +63,7 @@ function App() {
   });
 
   //const [defaultClothingItems, setDefaultClothingItems] = useState([]);
-  const [clothingItems, setClothingItems] = useState(defaultClothingItems);
+  const [clothingItems, setClothingItems] = useState([]);
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
 
