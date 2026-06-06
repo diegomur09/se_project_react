@@ -1,4 +1,5 @@
-import { checkResponse, baseUrl } from "./api";
+import { checkResponse } from "./api";
+import { baseUrl } from "../utils/constants";
 
 export const register = ({ name, avatar, email, password }) =>
   fetch(`${baseUrl}/signup`, {

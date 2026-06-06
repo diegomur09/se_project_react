@@ -1,5 +1,5 @@
 import "./AddItemModal.css";
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { useForm } from "../../hook/UseForm";
 
@@ -111,6 +111,7 @@ function AddItemModal({ isOpen, onClose, onAddItemModalSubmit }) {
           Cold
         </label>
       </fieldset>
+      {error && <span className="modal__error">{error}</span>}
     </ModalWithForm>
   );
 }

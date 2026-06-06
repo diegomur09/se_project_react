@@ -3,11 +3,14 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://wtrt-demo.heroinewarrior.com",
   "scripts": {
     "dev": "vite --open",
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "scp -r ./dist/* diegomurcia2@wtrt-demo.heroinewarrior.com:/home/diegomurcia2/frontend"
   },
   "dependencies": {
     "react": "^18.3.1",

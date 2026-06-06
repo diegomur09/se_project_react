@@ -109,9 +109,16 @@ export const defaultClothingItems = [
   },
 ];
 
-export const coordinates = {
+const coordinates = {
   latitude: 39.923985,
   longitude: -105.081661,
 };
 
-export const APIkey = "2644093d03d6edf1fc48ab6d6ed1a99c";
+const baseUrl =
+  import.meta.env.PROD
+    ? "https://api.wtrt-demo.heroinewarrior.com"
+    : "http://localhost:3001";
+
+const APIkey = "2644093d03d6edf1fc48ab6d6ed1a99c";
+
+export { coordinates, baseUrl, APIkey };
